@@ -1,6 +1,3 @@
-apt update
-apt install libsfml
-
 git submodule init
 git submodule update
 
