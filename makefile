@@ -7,7 +7,18 @@ SRC_DIRS := ./src
 
 # ==== LIBRARIES ==== #
 FTXUI := ./lib/FTXUI
+FTXUI_FLAGS := \
+	-L$(FTXUI)/build \
+	-l:libftxui-component.a \
+	-l:libftxui-dom.a \
+	-l:libftxui-screen.a \
+	-I$(FTXUI)/include
+
 SFML := ./lib/SFML
+SFML_FLAGS := \
+	-lsfml-graphics \
+	-lsfml-window \
+	-lsfml-system
 
 # ==== Files ==== #
 
@@ -20,20 +31,13 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS := \
 	$(INC_FLAGS) \
+	$(FTXUI_FLAGS) \
+	$(SFML_FLAGS) \
 	-MMD \
-	-MP \
-	-L$(FTXUI)/build \
-	-l:libftxui-component.a \
-	-l:libftxui-dom.a \
-	-l:libftxui-screen.a \
-	-I$(FTXUI)/include \
-	-L$(SFML)/build/lib \
-	-l:libsfml-audio-s.a \
-	-I$(SFML)/include
-
-
+	-MP
 
 # ==== Build targets ==== #
+
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS) $(BUILD_DIR)/assets
 	@ $(CXX) $(OBJS) -o $@ $(LDFLAGS) $(CPPFLAGS)
