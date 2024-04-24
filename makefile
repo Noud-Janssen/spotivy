@@ -1,11 +1,13 @@
 TARGET_EXEC := audio_test
 
-# ==== FTXUI ==== #
 
-FTXUI := ./lib/FTXUI
-
+# ==== Folders ==== #
 BUILD_DIR := ./build
 SRC_DIRS := ./src
+
+# ==== LIBRARIES ==== #
+FTXUI := ./lib/FTXUI
+SFML := ./lib/SFML
 
 # ==== Files ==== #
 
@@ -16,9 +18,6 @@ DEPS := $(OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-LIBRARIES := \
-	sfml-audio \
-
 CPPFLAGS := \
 	$(INC_FLAGS) \
 	-MMD \
@@ -28,7 +27,9 @@ CPPFLAGS := \
 	-l:libftxui-dom.a \
 	-l:libftxui-screen.a \
 	-I$(FTXUI)/include \
-	$(addprefix -l,$(LIBRARIES))
+	-L$(SFML)/build/lib \
+	-l:libsfml-audio-s.a \
+	-I$(SFML)/include
 
 
 
@@ -59,14 +60,14 @@ help:
 
 .PHONY: init
 init:
-	@ sudo apt update
-	@ sudo apt install libsfml-dev
 	@ git submodule init
 	@ git submodule update
 	@ mkdir -p include
 	@ mkdir -p assets
 	@ mkdir -p $(FTXUI)/build
 	@ cd $(FTXUI)/build && cmake .. && make
+	@ mkdir -p $(SFML)/build
+	@ cd $(SFML)/build && cmake .. && make
 
 .PHONY: run
 run: $(BUILD_DIR)/$(TARGET_EXEC)

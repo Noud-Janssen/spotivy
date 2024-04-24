@@ -1,3 +1,6 @@
 [submodule "lib/FTXUI"]
 	path = lib/FTXUI
 	url = https://github.com/ArthurSonzogni/FTXUI.git
+[submodule "lib/SFML"]
+	path = lib/SFML
+	url = https://github.com/SFML/SFML.git
