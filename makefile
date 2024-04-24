@@ -1,5 +1,7 @@
-TARGET_EXEC := audio_test
 
+# ==== Project configuration ==== #
+
+TARGET_EXEC := audio_test
 
 # ==== Folders ==== #
 BUILD_DIR := ./build
