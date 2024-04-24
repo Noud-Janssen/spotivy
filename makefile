@@ -70,8 +70,6 @@ init:
 	@ mkdir -p assets
 	@ mkdir -p $(FTXUI)/build
 	@ cd $(FTXUI)/build && cmake .. && make
-	@ mkdir -p $(SFML)/build
-	@ cd $(SFML)/build && cmake .. && make
 
 .PHONY: run
 run: $(BUILD_DIR)/$(TARGET_EXEC)
