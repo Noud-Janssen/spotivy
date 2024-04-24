@@ -19,9 +19,6 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 LIBRARIES := \
 	sfml-audio \
 
-
-
-
 CPPFLAGS := \
 	$(INC_FLAGS) \
 	-MMD \
@@ -62,6 +59,8 @@ help:
 
 .PHONY: init
 init:
+	@ sudo apt update
+	@ sudo apt install libsfml-dev
 	@ git submodule init
 	@ git submodule update
 	@ mkdir -p include
