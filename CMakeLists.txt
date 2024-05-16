@@ -33,7 +33,7 @@ endif()
 
 # ------------------------------------------------------------------------------
 
-add_executable(spotivy src/main.cpp)
+add_executable(spotivy src/main.cpp src/example.cpp)
 target_link_libraries(spotivy 
     PRIVATE sfml-graphics 
     PRIVATE ftxui::screen
