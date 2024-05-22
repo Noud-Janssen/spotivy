@@ -1,15 +1,14 @@
-#include "standaard/example.h"
 
-namespace standaard::example
-{
+// namespace standaard::example
+// {
 
-    void init()
-    {
+//     void init()
+//     {
 
-    }
+//     }
 
-    void loop()
-    {
+//     void loop()
+//     {
 
-    }
-} // namespace standaard
+//     }
+// } // namespace standaard
