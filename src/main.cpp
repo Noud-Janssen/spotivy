@@ -1,15 +1,14 @@
 #include <iostream>
 #include "model/song.h"
+#include "driver/audio_wav.h"
 
 int main(int argc, char const *argv[])
 { 
-  model::song song("artist", "album", "name");
+  driver::audio_wav wav;
 
-  
-  /* code */
-  std::cout << song.get_song() << std::endl;
-
-  while(true);
+  while(true) {
+    wav.loop();
+  };
 
   return 0;
 }

@@ -33,10 +33,17 @@ endif()
 
 # ------------------------------------------------------------------------------
 
-add_executable(spotivy src/main.cpp src/example.cpp src/model/song.cpp)
+set(SOURCES
+  src/main.cpp
+  src/model/song.cpp
+  src/driver/audio_base.cpp
+  src/driver/audio_wav.cpp
+)
+
+add_executable(spotivy ${SOURCES})
 target_include_directories(spotivy PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(spotivy 
-    PRIVATE sfml-graphics 
+    PRIVATE sfml-audio 
     PRIVATE ftxui::screen
     PRIVATE ftxui::dom
     PRIVATE ftxui::component
