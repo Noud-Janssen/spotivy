@@ -36,7 +36,7 @@ namespace driver
 
     bool audio_wav::pause() 
     {
-
+        m_music_player.pause();
     }
 
     bool audio_wav::done()
