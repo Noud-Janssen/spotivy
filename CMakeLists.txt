@@ -38,6 +38,9 @@ set(SOURCES
   src/model/song.cpp
   src/driver/audio_base.cpp
   src/driver/audio_wav.cpp
+  src/view/main.cpp
+  src/view/component/base.cpp
+  src/view/component/audio_controls.cpp
 )
 
 add_executable(spotivy ${SOURCES})
