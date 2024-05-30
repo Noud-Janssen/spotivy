@@ -2,11 +2,11 @@
 
 namespace model
 {
-    void song_list_base::add(song) {
+    void song_list_base::add(song s) {
         
     }
 
-    void song_list_base::add(song_list_base) {
+    void song_list_base::add(song_list_base list) {
         
     }
 
@@ -19,6 +19,6 @@ namespace model
     }
 
     std::string song_list_base::get_title() {
-        return "Jordi's playlist";
+        return m_title;
     }
 } // namespace model

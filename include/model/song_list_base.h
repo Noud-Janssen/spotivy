@@ -11,8 +11,8 @@ namespace model
     class song_list_base
     {
     public:
-        void add(song);
-        void add(song_list_base);
+        void add(song s);
+        void add(song_list_base list);
         song operator[](size_t index);
         size_t get_size(); 
         std::string get_title();
