@@ -24,7 +24,6 @@ namespace model
         std::string get_album();
         std::vector<song> all(); 
 
-
     private:
         uint64_t m_id;     
     
