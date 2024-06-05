@@ -20,10 +20,9 @@ namespace model
         size_t get_size(); 
         std::string get_title();
 
-    private:
+    protected:
         std::string m_title;   
         std::vector<song> m_songs;  
-    
     };
 
     

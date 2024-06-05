@@ -11,7 +11,7 @@ namespace model
     class playlist : public song_list_base
     {
     public:
-  
+        playlist(std::string title);
     public:
         
     private:
