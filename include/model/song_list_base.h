@@ -11,6 +11,9 @@ namespace model
     class song_list_base
     {
     public:
+        song_list_base(std::string title);
+        ~song_list_base() = default;  
+    public:
         void add(song s);
         void add(song_list_base list);
         song operator[](size_t index);
@@ -18,7 +21,8 @@ namespace model
         std::string get_title();
 
     private:
-        std::string m_title;     
+        std::string m_title;   
+        std::vector<song> m_songs;  
     
     };
 
