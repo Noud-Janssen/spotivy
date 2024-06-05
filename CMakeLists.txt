@@ -36,6 +36,7 @@ endif()
 set(SOURCES
   src/main.cpp
   src/model/song.cpp
+  src/debug_client.cpp
   src/driver/audio_base.cpp
   src/driver/audio_wav.cpp
 )
