@@ -1,5 +1,5 @@
-#ifndef SPOTIVY_CONTROLLER_SONG_H
-#define SPOTIVY_CONTROLLER_SONG_H
+#ifndef SPOTIVY_MODEL_SONG_H
+#define SPOTIVY_MODEL_SONG_H
 
 #include <cstdint>
 #include <string>
@@ -33,4 +33,4 @@ namespace model
 } // namespace model
 
 
-#endif // SPOTIVY_CONTROLLER_SONG_H
+#endif // SPOTIVY_MODEL_SONG_H
