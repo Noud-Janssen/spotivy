@@ -5,6 +5,8 @@
 #include <string>
 #include <functional>
 
+#include "controller/music.h"
+
 typedef std::function<void(std::vector<std::string>)> cmd_callback;
 
 class debug_client
@@ -23,6 +25,8 @@ private:
         cmd_callback fxn;
     };
     std::vector<commands_t> m_commands;
+
+    controller::music m_music_controller;
 
     bool m_running;
 };
