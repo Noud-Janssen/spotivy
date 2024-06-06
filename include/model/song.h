@@ -1,5 +1,5 @@
-#ifndef SPOTIVY_CONTROLLER_SONG_H
-#define SPOTIVY_CONTROLLER_SONG_H
+#ifndef SPOTIVY_MODEL_SONG_H
+#define SPOTIVY_MODEL_SONG_H
 
 #include <cstdint>
 #include <string>
@@ -24,7 +24,6 @@ namespace model
         std::string get_album();
         std::vector<song> all(); 
 
-
     private:
         uint64_t m_id;     
     
@@ -34,4 +33,4 @@ namespace model
 } // namespace model
 
 
-#endif // SPOTIVY_CONTROLLER_SONG_H
+#endif // SPOTIVY_MODEL_SONG_H
