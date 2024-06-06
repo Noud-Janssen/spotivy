@@ -32,9 +32,8 @@ namespace driver
         {
             // m_music_player.openFromFile(m_buffer[m_index].get_file_path());
             // m_music_player.play();
-        }
-        else
-        {
+            return true;
+        } else {
             return false;
         }
 
