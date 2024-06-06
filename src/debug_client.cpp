@@ -17,6 +17,11 @@ void debug_client::init()
     define("clear", [&](std::vector<std::string> strings){ 
         std::system("clear");
     });
+    define("help", [&](std::vector<std::string> strings) {
+        std::cout << " -- exit                  Exit the program" << std::endl;
+        std::cout << " -- clear                 Clear the screen" << std::endl;
+        std::cout << " -- help                  Show this help screen" << std::endl;
+    });
 
 }
 
@@ -37,16 +42,17 @@ void debug_client::loop()
         while (stream >> word) {
             args.push_back(word);
         }
-         
-        for (std::string s : args)
-        {
-            std::cout << s << std::endl;
-        }
 
+        bool found_cmd = false;
+        
         for (commands_t cmd : m_commands) {
             if (args[0] == cmd.text) {
+                found_cmd = true;
                 cmd.fxn({});
             }
+        }
+        if (!found_cmd) {
+            std::cout << args[0] << " is not a viable command!" << std::endl;
         }
     }
 }
