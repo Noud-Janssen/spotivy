@@ -16,8 +16,14 @@ int main(int argc, char const *argv[])
   playlist.add(model::song(6));
   playlist.add(model::song(7));
 
+  model::playlist list2("My Playlist 2");
+
+  list2.add(playlist);
+
+
+
+  std::cout << "Playlist list2 length is: " << list2.get_size() << std::endl;
   while(true) {
-    playlist.get_size();
   };
 
   return 0;

@@ -18,6 +18,7 @@ namespace driver
     {
         m_buffer.emplace_back(song);
         ++m_index;
+        return true;
     }
 
     bool audio_wav::play() 
@@ -28,6 +29,7 @@ namespace driver
         if (m_index >= 0) {
             // m_music_player.openFromFile(m_buffer[m_index].get_file_path());
             // m_music_player.play();
+            return true;
 
         } else {
             return false;
@@ -37,6 +39,7 @@ namespace driver
     bool audio_wav::pause() 
     {
         m_music_player.pause();
+        return true;
     }
 
     bool audio_wav::done()
@@ -50,6 +53,7 @@ namespace driver
             m_index++;
         }
         play();
+        return true;
     }
 
     bool audio_wav::previous() 
@@ -58,5 +62,6 @@ namespace driver
             m_index--;
         }
         play();
+        return true;
     }
 } // namespace driver
