@@ -9,7 +9,8 @@ namespace driver
 
     void audio_wav::loop()
     {
-        if (done()) {
+        if (done())
+        {
             skip();
         }
     }
@@ -18,25 +19,32 @@ namespace driver
     {
         m_buffer.emplace_back(song);
         ++m_index;
+        return true;
     }
 
-    bool audio_wav::play() 
+    bool audio_wav::play()
     {
-        if (m_music_player.openFromFile("../assets/test.wav")) {
+        if (m_music_player.openFromFile("../assets/test.wav"))
+        {
             m_music_player.play();
         };
-        if (m_index >= 0) {
+        if (m_index >= 0)
+        {
             // m_music_player.openFromFile(m_buffer[m_index].get_file_path());
             // m_music_player.play();
-
-        } else {
+        }
+        else
+        {
             return false;
         }
+
+        return true;
     }
 
-    bool audio_wav::pause() 
+    bool audio_wav::pause()
     {
         m_music_player.pause();
+        return true;
     }
 
     bool audio_wav::done()
@@ -44,19 +52,25 @@ namespace driver
         return m_music_player.getStatus() == sf::SoundSource::Status::Stopped;
     }
 
-    bool audio_wav::skip() 
+    bool audio_wav::skip()
     {
-        if (m_index < m_buffer.size()) {
+        if (m_index < m_buffer.size())
+        {
             m_index++;
+            return true;
         }
         play();
+        return true;
     }
 
-    bool audio_wav::previous() 
+    bool audio_wav::previous()
     {
-        if (m_index > 0) {
+        if (m_index > 0)
+        {
             m_index--;
+            return true;
         }
         play();
+        return true;
     }
 } // namespace driver

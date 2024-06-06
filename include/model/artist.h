@@ -2,16 +2,20 @@
 #define SPOTIVY_MODEL_ARTIST_H
 
 #include <vector>
+#include <string>
 
 namespace model
 {
     class artist
     {
     public:
-        artist() = default;
+        artist(std::string);
         ~artist() = default;
     public:
         static std::vector<artist> all();
+        std::string get_name();
+    private:
+        std::string m_name;
     };
     
     
