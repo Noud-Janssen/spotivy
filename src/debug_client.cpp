@@ -20,12 +20,17 @@ void debug_client::init()
         #else
         std::system("cls");
         #endif // __unix__
-
     });
     define("help", [&](std::vector<std::string> strings) {
-        std::cout << " -- exit                  Exit the program" << std::endl;
-        std::cout << " -- clear                 Clear the screen" << std::endl;
-        std::cout << " -- help                  Show this help screen" << std::endl;
+        std::cout << " -- exit                           Exit the program" << std::endl;
+        std::cout << " -- clear                          Clear the screen" << std::endl;
+        std::cout << " -- help                           Show this help screen" << std::endl;
+        std::cout << " ==== Play Controls ====" << std::endl;
+        std::cout << " -- queue                          subcommands to use the queue system" << std::endl;
+        std::cout << " -- skip                           skip to the next song" << std::endl;
+        std::cout << " -- previous                       go back one song in the queue" << std::endl;
+        std::cout << " -- play  [ARTIST] [ALBUM] [SONG]  play the selected song" << std::endl;
+        std::cout << " -- pause                          pause the current playing song" << std::endl;
     });
 
     define("list", [&](std::vector<std::string> strings){ 
@@ -56,13 +61,12 @@ void debug_client::init()
         if (strings.size() == 1) {
             std::cout << "TODO: get all song in the queue" << std::endl;
         } else {
-            if (strings[2] == "add") {
-
+            if (strings[1] == "add") {
+                std::cout << "TODO: add functionality of adding songs, playlists and albums to the queue" << std::endl;
             } else
-            if (strings[2] == "clear") {
-
+            if (strings[1] == "clear") {
+                std::cout << "TODO: add functionality of clearing the queue" << std::endl;
             }
-
         }
     });
 
