@@ -11,8 +11,10 @@ namespace model
     class album : public song_list_base
     {
     public:
-        void add(song s) = delete;
+        album(std::string name, std::vector<song> songs);
+        ~album() = default;
     public:
+        void add(song s) = delete;
 
     private:
         

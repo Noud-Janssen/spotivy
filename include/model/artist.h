@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "model/album.h"
 
 namespace model
 {
@@ -16,6 +17,8 @@ namespace model
         std::string get_name();
     private:
         std::string m_name;
+        std::vector<album> m_albums;
+
     };
     
     

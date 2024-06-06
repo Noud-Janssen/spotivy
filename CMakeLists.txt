@@ -41,6 +41,7 @@ set(SOURCES
   src/driver/audio_wav.cpp
   src/model/song_list_base.cpp
   src/model/artist.cpp
+  src/model/album.cpp
 )
 
 add_executable(spotivy ${SOURCES})

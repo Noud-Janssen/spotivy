@@ -22,8 +22,8 @@ namespace model
 
     private:
         std::string m_title;   
+    protected:
         std::vector<song> m_songs;  
-    
     };
 
     
