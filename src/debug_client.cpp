@@ -22,22 +22,26 @@ void debug_client::init()
         #endif // __unix__
     });
     define("help", [&](std::vector<std::string> strings) {
-        std::cout << " -- exit                           Exit the program" << std::endl;
-        std::cout << " -- clear                          Clear the screen" << std::endl;
-        std::cout << " -- help                           Show this help screen" << std::endl;
-        std::cout << " ==== Play Controls ====" << std::endl;
-        std::cout << " -- queue                          subcommands to use the queue system" << std::endl;
-        std::cout << " -- skip                           skip to the next song" << std::endl;
-        std::cout << " -- previous                       go back one song in the queue" << std::endl;
-        std::cout << " -- play  [ARTIST] [ALBUM] [SONG]  play the selected song" << std::endl;
-        std::cout << " -- pause                          pause the current playing song" << std::endl;
+        std::cout << " ─ exit                           Exit the program" << std::endl;
+        std::cout << " ─ clear                          Clear the screen" << std::endl;
+        std::cout << " ─ help                           Show this help screen" << std::endl;
+        std::cout << " ━━━━ Info Commands ━━━━" << std::endl;
+        std::cout << " ─ List  [ARTIST] [ALBUM]         Show a list of items" << std::endl;
+
+        std::cout << " ━━━━ Play Commands ━━━━" << std::endl;
+        std::cout << " ─ queue                          subcommands to use the queue system" << std::endl;
+        std::cout << " ─ skip                           skip to the next song" << std::endl;
+        std::cout << " ─ previous                       go back one song in the queue" << std::endl;
+        std::cout << " ─ play  [ARTIST] [ALBUM] [SONG]  play the selected song" << std::endl;
+        std::cout << " ─ pause                          pause the current playing song" << std::endl;
     });
 
-    define("list", [&](std::vector<std::string> strings){ 
+    define("list", [&](std::vector<std::string> strings){
         if (strings.size() == 1) {
             std::cout << "Artists: " << std::endl;
-            std::cout << "TODO: get all artists" << std::endl;
-            // LIST ALL ARTISTS
+            for (model::artist art : m_music_controller.get_artists()) {
+                std::cout << " ┣━ " << art.get_name() << std::endl;
+            } 
         }
         if (strings.size() == 2) {
             std::cout << "Albums of " << strings[1] << ":" << std::endl;

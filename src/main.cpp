@@ -10,13 +10,6 @@ int main(int argc, char const *argv[])
 { 
 
 
-  std::vector<model::artist> artists = model::artist::all();
-
-  for(auto artist : artists)
-  {
-    std::cout << artist.get_name() << std::endl;
-  }
-
   debug_client client;
   client.init();
   client.loop();

@@ -13,4 +13,8 @@ namespace controller
     void music::skip() {
         
     }
+
+    std::vector<model::artist> music::get_artists() {
+        return model::artist::all();
+    }
 } // namespace controller
