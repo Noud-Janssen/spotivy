@@ -35,12 +35,15 @@ endif()
 
 set(SOURCES
   src/main.cpp
+  src/controller/music.cpp
   src/model/song.cpp
+  src/debug_client.cpp
   src/driver/audio_base.cpp
   src/driver/audio_wav.cpp
   src/model/song_list_base.cpp
   src/model/playlist.cpp
   src/model/album.cpp
+  src/model/artist.cpp
 )
 
 add_executable(spotivy ${SOURCES})
