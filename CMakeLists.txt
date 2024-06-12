@@ -41,6 +41,8 @@ set(SOURCES
   src/driver/audio_base.cpp
   src/driver/audio_wav.cpp
   src/model/song_list_base.cpp
+  src/model/playlist.cpp
+  src/model/album.cpp
   src/model/artist.cpp
 )
 

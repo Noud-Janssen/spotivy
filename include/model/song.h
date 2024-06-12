@@ -22,7 +22,7 @@ namespace model
         std::string get_filetype();
         std::vector<std::string> get_collabs();   
         std::string get_album();
-        std::vector<song> all(); 
+        static std::vector<song> all(); 
 
     private:
         uint64_t m_id;     
