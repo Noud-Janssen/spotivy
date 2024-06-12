@@ -33,8 +33,15 @@ endif()
 
 # ------------------------------------------------------------------------------
 
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 set(SOURCES
-  src/main.cpp
   src/controller/music.cpp
   src/model/song.cpp
   src/debug_client.cpp
@@ -46,14 +53,28 @@ set(SOURCES
   src/model/artist.cpp
 )
 
-add_executable(spotivy ${SOURCES})
+set(TEST_SOURCES
+  test/model/song.cpp
+  test/model/album.cpp
+)
+
+add_executable(spotivy src/main.cpp ${SOURCES})
 target_include_directories(spotivy PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(spotivy 
-    PRIVATE sfml-audio 
-    PRIVATE ftxui::screen
-    PRIVATE ftxui::dom
-    PRIVATE ftxui::component
+PRIVATE sfml-audio 
+PRIVATE ftxui::screen
+PRIVATE ftxui::dom
+PRIVATE ftxui::component
 )
 target_compile_features(spotivy PRIVATE cxx_std_17)
+
+add_executable(spotivy_test ${SOURCES} ${TEST_SOURCES})
+target_include_directories(spotivy_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(spotivy_test
+  PRIVATE sfml-audio 
+  GTest::gtest_main
+)
+target_compile_features(spotivy_test PRIVATE cxx_std_17)
+
 
 install(TARGETS spotivy)

@@ -19,7 +19,7 @@ namespace model
     }
 
     std::string song::get_file_path() {
-        return get_artist() + "/" + get_album() + "/" + get_song();
+        return get_artist() + "/" + get_album() + "/" + get_song() + get_filetype();
     }
 
     std::string song::get_genre() {
