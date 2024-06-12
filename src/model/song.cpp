@@ -2,7 +2,9 @@
 
 namespace model
 {
-    song::song(std::string artist, std::string album, std::string name) {
+    song::song(std::string artist, std::string album, std::string name) 
+        : m_artist(artist), m_album(album), m_name(name)
+    {
         
     }
 
@@ -21,11 +23,11 @@ namespace model
     }
 
     std::string song::get_genre() {
-        return "rap";
+        return m_genre;
     }
 
     std::string song::get_artist() {
-        return "boef";
+        return m_artist;
     }
 
     std::string song::get_filetype() {
@@ -33,15 +35,15 @@ namespace model
     }   
 
     std::vector<std::string> song::get_collabs() {
-        return {"habiba", "habiba2", "habiba3"};
+        return {"a", "b", "c"};
     }   
 
     std::string song::get_album() {
-        return "habiba";
+        return m_album;
     }
 
     std::string song::get_song() {
-        return "habiba.wav";
+        return m_name;
     } 
 
     std::vector<song> song::all() {

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <sstream>
+#include "model/album.h"
 
 debug_client::debug_client()
     : m_running(true)
@@ -39,25 +40,48 @@ void debug_client::init()
     define("list", [&](std::vector<std::string> strings){
         if (strings.size() == 1) {
             std::cout << "Artists: " << std::endl;
-            for (model::artist art : m_music_controller.get_artists()) {
-                std::cout << " ┣━ " << art.get_name() << std::endl;
-            } 
+            std::vector<model::artist> artists = m_music_controller.get_artists();
+            for (int i = 0; i < artists.size(); i++) {
+                if (i == artists.size() - 1) {
+                    std::cout << " ┗━[" << i << "] " << artists[i].get_name() << std::endl;
+                } else {
+                    std::cout << " ┣━[" << i << "] " << artists[i].get_name() << std::endl;
+                }
+
+            }
         }
         if (strings.size() == 2) {
-            std::cout << "Albums of " << strings[1] << ":" << std::endl;
-            std::cout << "TODO: get all albums of given artists " << std::endl;
+            model::artist artist = m_music_controller.get_artists()[std::stoi(strings[1])];
+            std::cout << "Albums of " << artist.get_name() << ":" << std::endl;
             // LIST ALL ALBUMS
-            // for (model::album alb : m_music_controller.find_artist(strings[1]).get_albums()) {
-            //     std::cout << alb.get_name() << std::endl;
-            // }
-        }
-        if (strings.size() == 3) {
-            std::cout << "Songs of " << strings[1] << "/" << strings[2] << std::endl;
-            std::cout << "TODO: get all songs of given album of given artist" << std::endl;
-            // LIST ALL SONGS OF A ALBUM OF A SONG
-            // for (model::song s : m_music_controller.find_artist(strings[1]).find_albums(strings[2])) {
-            //     std::cout << s.get_name() << std::endl;
-            // }
+            std::vector<model::album> albums = artist.get_albums();
+            for (int i = 0; i < albums.size(); i++) {
+                if (i == albums.size() - 1) {
+                    std::cout << " ┗━┳━ " << albums[i].get_title() << std::endl;
+                    for(size_t j = 0; j < albums[i].get_size(); j++) 
+                    {
+                        if (j == albums[i].get_size() - 1) {
+                            std::cout << "   ┗[";
+                        } else {
+                            std::cout << "   ┣[";
+                        }
+                        std::cout << (i * 100 + j) << "] " << albums[i][j].get_song() << std::endl;
+                    }
+                } else {
+                    std::cout << " ┣━┳━ " << albums[i].get_title() << std::endl;
+                    for(size_t j = 0; j < albums[i].get_size(); j++) 
+                    {
+                        if (j == albums[i].get_size() - 1) {
+                            std::cout << " ┃ ┗[";
+                        } else {
+                            std::cout << " ┃ ┣[";
+                        }
+                        std::cout << (i * 100 + j) << "] " << albums[i][j].get_song() << std::endl;
+                    }
+                }
+                
+            }
+
         }
     });
 

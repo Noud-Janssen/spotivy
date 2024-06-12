@@ -25,8 +25,13 @@ namespace model
         static std::vector<song> all(); 
 
     private:
-        uint64_t m_id;     
-    
+        uint64_t m_id;   
+
+        std::string m_artist;
+        std::string m_album;
+        std::string m_name;
+
+        std::string m_genre;    
     };
 
     
