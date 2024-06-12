@@ -75,6 +75,9 @@ void debug_client::init()
     });
 
 
+    m_commands[1].fxn({});
+
+    std::cout << "Welcome to Spotivy!" << std::endl;
 
     
 
