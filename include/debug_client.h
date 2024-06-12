@@ -1,5 +1,5 @@
 #ifndef SPOTIVY_DEBUG_CLIENT_H
-#define SPOITVY_DEBUG_CLIENT_H
+#define SPOTIVY_DEBUG_CLIENT_H
 
 #include <vector>
 #include <string>
