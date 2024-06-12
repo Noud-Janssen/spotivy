@@ -12,10 +12,26 @@ typedef std::function<void(std::vector<std::string>)> cmd_callback;
 class debug_client
 {
 public:
+    /**
+     * @brief Construct a new debug client object
+     * 
+     */
     debug_client();
+    /**
+     * @brief Destroy the debug client object
+     * 
+     */
     ~debug_client() = default;
 public:
+    /**
+     * @brief initialise the debug client
+     * 
+     */
     void init();
+    /**
+     * @brief loop over the debug client
+     * 
+     */
     void loop();
 private:
     void define(std::string s, cmd_callback fxn);
