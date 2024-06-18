@@ -2,10 +2,8 @@
 
 #include "model/song.h"
 
-// Demonstrate some basic assertions.
 TEST(model_song, constructor) {
     model::song s("Artist1","Album1","Song1");
-
 
     EXPECT_TRUE(s.get_artist() == "Artist1");
     EXPECT_TRUE(s.get_album() == "Album1");
