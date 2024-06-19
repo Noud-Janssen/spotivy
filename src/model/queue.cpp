@@ -2,7 +2,11 @@
 
 namespace model
 {
-    queue::queue() : song_list_base("queue") {
+    queue::queue() 
+        : 
+    song_list_base("queue"),
+    m_index(0) 
+    {
 
     }
 
@@ -22,6 +26,7 @@ namespace model
     
     void queue::clear() {
         m_songs.clear();
+        m_index = 0;
     }
 
     song queue::get_current() {
