@@ -2,16 +2,17 @@
 
 namespace controller
 {
-    void music::play() {
-        
+    std::string music::play(int artist_index, int album_index, int song_index) {
+        current_song = get_artists()[artist_index].get_albums()[album_index][song_index];
+        return current_song.get_album();
     }
 
-    void music::pause() {
-
+    std::string music::pause() {
+        return "Paused: " + current_song.get_song();
     }
 
     void music::skip() {
-        
+        m_queue.next();
     }
 
     std::vector<model::artist> music::get_artists() {

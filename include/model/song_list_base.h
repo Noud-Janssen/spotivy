@@ -15,6 +15,7 @@ namespace model
         ~song_list_base() = default;  
     public:
         void add(song s);
+        void remove(song s);
         void add(song_list_base list);
         song operator[](size_t index);
         size_t get_size(); 

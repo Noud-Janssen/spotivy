@@ -11,26 +11,9 @@ namespace model
         queue();
         ~queue() = default;
     public:
-        /**
-         * @brief select the next song in the queue
-         * 
-         */
         void next();
-        /**
-         * @brief go to the previous song in the queue
-         * 
-         */
         void previous();
-        /**
-         * @brief Get the current object
-         * 
-         * @return song 
-         */
         song get_current();
-        /**
-         * @brief clear the queue
-         * 
-         */
         void clear();
     private:
         int m_index;
