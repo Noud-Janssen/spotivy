@@ -7,6 +7,10 @@
 
 int main(int argc, char const *argv[])
 { 
+  #ifndef __UNIX__
+  std::system("chcp 65001");
+  #endif
+
   debug_client client;
   client.init();
   client.loop();
