@@ -14,6 +14,12 @@ namespace model
         
     }
 
+    bool song::operator==(const song &s) const {
+        return (m_name == s.m_name
+            && m_artist == s.m_artist
+            && m_album == s.m_album);
+    }
+
     uint64_t song::get_id() {
         return m_id;
     }

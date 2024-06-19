@@ -13,6 +13,8 @@ namespace model
         song(uint64_t song_id);
         ~song() = default;
     public:
+        bool operator==(const song &s) const;
+    public:
         uint64_t get_id();
 
         std::string get_file_path();
