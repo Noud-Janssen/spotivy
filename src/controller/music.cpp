@@ -2,6 +2,12 @@
 
 namespace controller
 {
+    music::music()
+        : current_song("a","b","c")
+    {
+
+    }
+
     std::string music::play(int artist_index, int album_index, int song_index) {
         current_song = get_artists()[artist_index].get_albums()[album_index][song_index];
         return current_song.get_album();

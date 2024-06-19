@@ -98,17 +98,6 @@ void debug_client::init()
         }
     });
 
-    define("play", [&](std::vector<std::string> strings) {
-        if (strings.size() == 1) {
-            m_music_controller.play();
-        } else if (strings.size() == 2) {
-            std::cout << "play [ARTIST NUMBER] [SONG NUMBER]" << std::endl;
-        } else {
-            m_music_player.queue().clear();
-            m_music_player.queue().add(m_music_controller.get_artists()[std::stoi(strings[1])].get_song_by_number(std::stoi(strings[2])));
-        }
-        
-    });
 
 
     m_commands[1].fxn({});

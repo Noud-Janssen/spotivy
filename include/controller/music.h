@@ -10,7 +10,7 @@ namespace controller
     class music
     {
     public:
-        music() = default;
+        music();
         ~music() = default;
     public:
         std::string play(int artist_index, int album_index, int song_index);
