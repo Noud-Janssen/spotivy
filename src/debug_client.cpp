@@ -30,9 +30,9 @@ void debug_client::init()
         std::cout << " ─ List  [ARTIST] [ALBUM]         Show a list of items" << std::endl;
 
         std::cout << " ━━━━ Play Commands ━━━━" << std::endl;
-        std::cout << " ─ queue                          subcommands to use the queue system" << std::endl;
-        std::cout << " ─ skip                           skip to the next song" << std::endl;
-        std::cout << " ─ previous                       go back one song in the queue" << std::endl;
+        // std::cout << " ─ queue                          subcommands to use the queue system" << std::endl;
+        // std::cout << " ─ skip                           skip to the next song" << std::endl;
+        // std::cout << " ─ previous                       go back one song in the queue" << std::endl;
         std::cout << " ─ play  [ARTIST] [ALBUM] [SONG]  play the selected song" << std::endl;
         std::cout << " ─ pause                          pause the current playing song" << std::endl;
     });
@@ -57,7 +57,7 @@ void debug_client::init()
             std::vector<model::album> albums = artist.get_albums();
             for (int i = 0; i < albums.size(); i++) {
                 if (i == albums.size() - 1) {
-                    std::cout << " ┗━┳━ " << albums[i].get_title() << std::endl;
+                    std::cout << " ┗━[" + std::to_string(i) + "] " << albums[i].get_title() << std::endl;
                     for(size_t j = 0; j < albums[i].get_size(); j++) 
                     {
                         if (j == albums[i].get_size() - 1) {
@@ -65,10 +65,10 @@ void debug_client::init()
                         } else {
                             std::cout << "   ┣[";
                         }
-                        std::cout << (i * 100 + j) << "] " << albums[i][j].get_song() << std::endl;
+                        std::cout << (j) << "] " << albums[i][j].get_song() << std::endl;
                     }
                 } else {
-                    std::cout << " ┣━┳━ " << albums[i].get_title() << std::endl;
+                    std::cout << " ┣━[" + std::to_string(i) + "] " << albums[i].get_title() << std::endl;
                     for(size_t j = 0; j < albums[i].get_size(); j++) 
                     {
                         if (j == albums[i].get_size() - 1) {
@@ -76,7 +76,7 @@ void debug_client::init()
                         } else {
                             std::cout << " ┃ ┣[";
                         }
-                        std::cout << (i * 100 + j) << "] " << albums[i][j].get_song() << std::endl;
+                        std::cout << (j) << "] " << albums[i][j].get_song() << std::endl;
                     }
                 }
                 
@@ -85,33 +85,68 @@ void debug_client::init()
         }
     });
 
-    define("queue", [&](std::vector<std::string> strings){
-        if (strings.size() == 1) {
-            std::cout << "TODO: get all song in the queue" << std::endl;
+    // define("queue", [&](std::vector<std::string> strings){
+    //     if (strings.size() == 1) {
+    //         std::cout << "TODO: get all song in the queue" << std::endl;
+    //     } else {
+    //         if (strings[1] == "add") {
+    //             std::cout << "TODO: add functionality of adding songs, playlists and albums to the queue" << std::endl;
+    //         } else
+    //         if (strings[1] == "clear") {
+    //             std::cout << "TODO: add functionality of clearing the queue" << std::endl;
+    //         }
+    //     }
+    // });
+
+    define("play",[&](std::vector<std::string> strings) {
+        if (strings.size() != 4) {
+            std::cout << "play [artist] [album] [song]" << std::endl;
         } else {
-            if (strings[1] == "add") {
-                std::cout << "TODO: add functionality of adding songs, playlists and albums to the queue" << std::endl;
-            } else
-            if (strings[1] == "clear") {
-                std::cout << "TODO: add functionality of clearing the queue" << std::endl;
-            }
+            // std::cout << m_music_controller.play(std::stoi(strings[1]),std::stoi(strings[2]),std::stoi(strings[3])) << std::endl;
+        }
+    });
+
+    define("pause",[&](std::vector<std::string> strings) {
+        m_music_controller.pause();
+    });
+
+    define("playlist",[&](std::vector<std::string> strings) {
+        if (strings.size() == 1) {
+            std::cout << "playlist add [artist index] [album index] [song index] to [playlist index]" << std::endl;
+            std::cout << "playlist add [artist index] [album index] to [playlist index]" << std::endl;
+            std::cout << "playlist remove [artist index] [album index] [song index] from [playlist] -- remove a song in a playlist" << std::endl;
+            std::cout << "playlist list          -- show all playlists" << std::endl;
+            std::cout << "playlist create [name] -- Create a playlist" << std::endl;
+        } else if (strings[1] == "add") {
+
+        } else if (strings[1] == "remove") {
+
+        } else if (strings[1] == "list") {
+
+        } else if (strings[1] == "create") {
+
+        } else {
+            std::cout << "playlist add [artist index] [album index] [song index] to [playlist index]" << std::endl;
+            std::cout << "playlist add [artist index] [album index] to [playlist index]" << std::endl;
+            std::cout << "playlist remove [artist index] [album index] [song index] from [playlist] -- remove a song in a playlist" << std::endl;
+            std::cout << "playlist list          -- show all playlists" << std::endl;
+            std::cout << "playlist create [name] -- Create a playlist" << std::endl;
         }
     });
 
 
+
     m_commands[1].fxn({});
-
-    std::cout << "Welcome to Spotivy!" << std::endl;
-
-    
 
 }
 
 void debug_client::loop()
 {
     
+    std::cout << "Welcome to Spotivy!" << std::endl;
+
     while (m_running) {
-        std::cout << "Spotivy -> ";
+        std::cout << "\x1b[30;42mSpotivy \x1b[32m▶\x1b[0m ";
         
         std::string input;
 

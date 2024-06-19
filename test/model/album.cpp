@@ -23,3 +23,4 @@ TEST(model_album, constructor) {
     EXPECT_TRUE(album.get_title() == "Album1");
     EXPECT_TRUE(album.get_size() == 6);
 }
+
