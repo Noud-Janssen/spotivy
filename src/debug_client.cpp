@@ -28,7 +28,6 @@ void debug_client::init()
         std::cout << " ─ help                           Show this help screen" << std::endl;
         std::cout << " ━━━━ Info Commands ━━━━" << std::endl;
         std::cout << " ─ List  [ARTIST] [ALBUM]         Show a list of items" << std::endl;
-
         std::cout << " ━━━━ Play Commands ━━━━" << std::endl;
         // std::cout << " ─ queue                          subcommands to use the queue system" << std::endl;
         // std::cout << " ─ skip                           skip to the next song" << std::endl;
@@ -85,24 +84,24 @@ void debug_client::init()
         }
     });
 
-    // define("queue", [&](std::vector<std::string> strings){
-    //     if (strings.size() == 1) {
-    //         std::cout << "TODO: get all song in the queue" << std::endl;
-    //     } else {
-    //         if (strings[1] == "add") {
-    //             std::cout << "TODO: add functionality of adding songs, playlists and albums to the queue" << std::endl;
-    //         } else
-    //         if (strings[1] == "clear") {
-    //             std::cout << "TODO: add functionality of clearing the queue" << std::endl;
-    //         }
-    //     }
-    // });
+    define("queue", [&](std::vector<std::string> strings){
+        if (strings.size() == 1) {
+            std::cout << "TODO: get all song in the queue" << std::endl;
+        } else {
+            if (strings[1] == "add") {
+                std::cout << "TODO: add functionality of adding songs, playlists and albums to the queue" << std::endl;
+            } else
+            if (strings[1] == "clear") {
+                std::cout << "TODO: add functionality of clearing the queue" << std::endl;
+            }
+        }
+    });
 
     define("play",[&](std::vector<std::string> strings) {
         if (strings.size() != 4) {
             std::cout << "play [artist] [album] [song]" << std::endl;
         } else {
-            // std::cout << m_music_controller.play(std::stoi(strings[1]),std::stoi(strings[2]),std::stoi(strings[3])) << std::endl;
+            std::cout << m_music_controller.play(std::stoi(strings[1]),std::stoi(strings[2]),std::stoi(strings[3])) << std::endl;
         }
     });
 
