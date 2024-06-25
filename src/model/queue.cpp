@@ -33,5 +33,9 @@ namespace model
         return m_songs[m_index];
     }
 
+    int queue::get_current_index() {
+        return m_index;
+    }
+
 
 } // namespace model

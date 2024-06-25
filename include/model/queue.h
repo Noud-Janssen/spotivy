@@ -10,16 +10,18 @@ namespace model
     public:
         queue();
         ~queue() = default;
+
     public:
         void next();
         void previous();
         song get_current();
         void clear();
+        int get_current_index();
+
     private:
         int m_index;
     };
-    
-} // namespace model
 
+} // namespace model
 
 #endif // SPOTIVY_MODEL_QUEUE_H
