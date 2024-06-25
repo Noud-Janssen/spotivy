@@ -1,20 +1,26 @@
 #include "controller/music.h"
+#include <iostream>
+
 
 namespace controller
 {
     music::music()
-        : current_song("a","b","c")
     {
 
     }
 
-    std::string music::play(int artist_index, int album_index, int song_index) {
-        current_song = get_artists()[artist_index].get_albums()[album_index][song_index];
-        return current_song.get_album();
+
+    void music::play(int artist_index, int album_index, int song_index) {
+        m_queue.clear();
+        if (song_index < 0) {
+            m_queue.add(get_artists()[artist_index].get_albums()[album_index]);
+        } else {
+            m_queue.add(get_artists()[artist_index].get_albums()[album_index][song_index]);
+        }
     }
 
     std::string music::pause() {
-        return "Paused: " + current_song.get_song();
+        return "Paused: " + m_queue.get_current().get_song();
     }
 
     void music::skip() {
@@ -36,4 +42,10 @@ namespace controller
         return model::artist(s);
 
     }
+
+    model::queue &music::get_queue()
+    {
+        return m_queue;
+    }
+
 } // namespace controller
