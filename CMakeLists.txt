@@ -52,12 +52,14 @@ set(SOURCES
   src/model/album.cpp
   src/model/artist.cpp
   src/model/queue.cpp
+  src/model/user.cpp
 )
 
 set(TEST_SOURCES
   test/model/song.cpp
   test/model/album.cpp
   test/model/queue.cpp
+  test/model/user.cpp
 )
 
 add_executable(spotivy src/main.cpp ${SOURCES})
