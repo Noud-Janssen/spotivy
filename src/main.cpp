@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
     // Hardcoded variables
     model::user::create("Noud", "Welkom123");
     model::user::create("Jordi", "pwd");
-    model::user::all()[0].login("Welkom123");
+    // model::user::all()[0].login("Welkom123");
 
     model::user::all()[0].get_playlists().emplace_back("Bangers");
     model::user::all()[0].get_playlists().back().add(
@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
 
     debug_client client;
     client.init();
-    // client.login();
+    client.login();
     client.loop();
     return 0;
 }
