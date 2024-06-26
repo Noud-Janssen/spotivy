@@ -29,10 +29,21 @@ public:
      */
     void init();
     /**
+     * @brief show the login cli
+     * 
+     */
+    void login();
+    /**
      * @brief loop over the debug client
      * 
      */
     void loop();
+    /**
+     * @brief mock a input
+     * 
+     * @param input 
+     */
+    void mock(std::vector<std::string> input);
 private:
     void define(std::string s, cmd_callback fxn);
 private:
