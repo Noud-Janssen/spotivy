@@ -1,0 +1,42 @@
+@startuml usecase
+
+
+left to right direction
+
+:user:
+
+user -- (login)
+
+package playlist {
+    (login) -- (create playlist)
+    (create playlist) -- (delete playlist)
+    (create playlist) -- (add music)
+    (create playlist) -- (play playlist)
+    (add music) ..> (add playlist to playlist)
+    (add music) ..> (add album to playlist)
+    (add music) ..> (add song to playlist)
+    (remove song from playlist) -- (add music)
+
+    (show playlists) -- (play playlist)
+}
+
+
+
+package basic_funtions {
+    (show artists) -- (show albums) 
+    (show albums) ..> (show song) 
+    (show song) -- (play song)
+    (play song) -- (pause song)
+    (show albums) -- (play album)
+    (play album) -- (skip song)
+    (play album) -- (pause song)
+    (play playlist) -- (skip song)
+    (play playlist) -- (pause song)
+}
+
+user -right- (show artists)
+user -right- (show playlists)
+
+
+
+@enduml

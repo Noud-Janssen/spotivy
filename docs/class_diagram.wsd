@@ -1,0 +1,108 @@
+@startuml class_diagram
+
+namespace controller {
+
+    class user {
+        
+    }
+
+    class music {
+        +play(): void
+        +pause(): void
+        +skip(): void
+
+        +add_to(model.song, model.song_list_base): void
+    }
+}
+
+namespace model {
+
+    class user {
+        -m_playlists: vector<playlist>
+        -m_name: string
+        +{static}all(): user
+        +get_playlists(): vector<playlist>
+        +get_name(): string
+        +add_user(string name): void
+        +add_friend(user): void
+        +remove_friend(user): void
+        +get_friend(index i): const user
+    }
+
+    user *--> user : -m_friends
+
+    class song {
+
+        -m_song_id: uint64_t
+
+        +song(string artist, string album, string name): song
+        +song(uint64_t song_id): song
+
+        +get_id(): uint64_t
+
+        +get_file_path(): string
+        +get_genre(): string
+        +get_artists(): string
+        +get_filetype(): string
+        +get_collabs(): vector<string>
+        +get_album(): string
+
+
+        +{static}all(): vector<song>
+    }
+
+    class song_list_base {
+        -m_title: string
+        +operator[](size_t index): song
+        +get_size(): size_t
+        +get_title(): string
+    }
+
+    class playlist {
+        +add(song): void
+        +add(song_list_base): void
+    }
+
+    class queue {
+        -m_index: int
+        +next(): void
+        +previous(): void
+        +get_current(): song
+        +clear(): void
+        +get_current_index(): int
+    }
+
+    class artist {
+        +artist(std::string name)
+        +{static}all(): std::vector<artist>
+        +get_name(): string
+        +get_albums(): list<song>
+    }
+
+
+    queue --|> song_list_base
+
+
+
+    artist o--> song_list_base : -m_albums
+    user o--> playlist : -m_playlists
+
+    playlist --|> song_list_base
+
+    song_list_base *--> song : -m_songs
+}
+
+class debug_client {
+    +init(): void
+    +loop(): void
+}
+
+debug_client *--> controller.music : -m_music_controller
+debug_client *--> controller.user : -m_user_controller
+
+controller.user *--> model.user : -m_current_user
+controller.music --> model.artist
+
+controller.music *--> model.queue: -m_queue
+
+@enduml
