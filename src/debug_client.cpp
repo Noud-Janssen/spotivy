@@ -173,8 +173,11 @@ void debug_client::init()
     define("pause",
            [&](std::vector<std::string> strings)
            {
-               m_music_controller.pause();
-               std::cout << "Paused: " << m_music_controller.get_queue().get_current().get_song() << std::endl;
+               if (m_music_controller.is_playing()) {
+                std::cout << "Paused: " << m_music_controller.get_queue().get_current().get_song() << std::endl;
+               } else {
+                std::cout << "No song is playing."<< std::endl;
+               }
            });
 
     define(
@@ -229,6 +232,18 @@ void debug_client::init()
             }
             else if (strings[1] == "remove")
             {
+                if (strings.size() == 3 && isdigit(strings[2]))
+                {
+                    std::vector<model::playlist> &lists = model::user::get_logged_in().get_playlists();
+                    lists.erase(lists.begin() + std::stoi(strings[2]));
+                }
+            }
+            else if (strings[1] == "play")
+            {
+                if (strings.size() == 3 && isdigit(strings[2]))
+                {
+                    m_music_controller.play(model::user::get_logged_in().get_playlists()[std::stoi(strings[2])]);
+                }
             }
             else if (strings[1] == "list")
             {

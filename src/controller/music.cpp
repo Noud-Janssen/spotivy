@@ -19,6 +19,25 @@ namespace controller
         }
     }
 
+    void music::play(model::playlist playlist)
+    {
+        std::cout << "Test" << std::endl;
+        m_queue.clear();
+        for (size_t i = 0; i < playlist.get_size(); i++)
+        {
+            m_queue.add(playlist[i]);
+        }
+    }
+
+    bool music::is_playing()
+    {
+        if (m_queue.get_size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     std::string music::pause() {
         return "Paused: " + m_queue.get_current().get_song();
     }

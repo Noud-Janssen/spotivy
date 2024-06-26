@@ -4,6 +4,7 @@
 #include <vector>
 #include "model/artist.h"
 #include "model/queue.h"
+#include "model/playlist.h"
 
 namespace controller
 {
@@ -29,6 +30,15 @@ namespace controller
          * @param song_index 
          */
         void play(int artist_index, int album_index, int song_index = -1);
+        void play(model::playlist playlist);
+
+        /**
+         * @brief check if a song is playing
+         * 
+         * @return true 
+         * @return false 
+         */
+        bool is_playing();
         /**
          * @brief pause the current song
          * 
